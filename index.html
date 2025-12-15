@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Мінеральні води Вінничини</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>Мінеральні води Вінничини</h1>
+
+  <img src="images/logo.png" alt="Логотип" width="250">
+
+  <nav>
+    <button onclick="showHome()">Головна</button>
+    <button onclick="showPhotos()">Фото</button>
+    <button onclick="showGif()">GIF</button>
+  </nav>
+
+  <hr>
+</header>
+
+<!-- ГОЛОВНА -->
+<section id="homeSection">
+  <h2>Про сайт</h2>
+  <p>
+    Цей вебсайт присвячений мінеральним водам Вінничини.
+    Тут представлено ілюстративні матеріали, що демонструють
+    природне походження, чистоту та оздоровчі властивості
+    мінеральних джерел регіону.
+  </p>
+</section>
+
+<!-- ФОТО -->
+<section id="photoSection" style="display:none;">
+  <h2>Фотогалерея</h2>
+
+  <img id="photoImage" src="images/img1.jpg" alt="Мінеральні води" width="800">
+
+  <p>
+    <button onclick="prevPhoto()">⬅ Назад</button>
+    <button onclick="nextPhoto()">Далі ➡</button>
+  </p>
+
+  <p id="photoCounter">Фото 1 з 10</p>
+</section>
+
+<!-- GIF -->
+<section id="gifSection" style="display:none;">
+  <h2>GIF-анімація</h2>
+  <img src="images/gif.gif" alt="GIF мінеральні води" width="600">
+</section>
+
+<!-- SCRIPT -->
+<script>
+  let photos = [
+    "images/img1.jpg",
+    "images/img2.jpg",
+    "images/img3.jpg",
+    "images/img4.jpg",
+    "images/img5.jpg",
+    "images/img6.jpg",
+    "images/img7.jpg",
+    "images/img8.jpg",
+    "images/img9.jpg",
+    "images/img10.jpg"
+  ];
+
+  let index = 0;
+
+  function updatePhoto() {
+    document.getElementById("photoImage").src = photos[index];
+    document.getElementById("photoCounter").innerText =
+      "Фото " + (index + 1) + " з " + photos.length;
+  }
+
+  function nextPhoto() {
+    if (index < photos.length - 1) {
+      index++;
+      updatePhoto();
+    }
+  }
+
+  function prevPhoto() {
+    if (index > 0) {
+      index--;
+      updatePhoto();
+    }
+  }
+
+  function showHome() {
+    hideAll();
+    document.getElementById("homeSection").style.display = "block";
+  }
+
+  function showPhotos() {
+    hideAll();
+    document.getElementById("photoSection").style.display = "block";
+  }
+
+  function showGif() {
+    hideAll();
+    document.getElementById("gifSection").style.display = "block";
+  }
+
+  function hideAll() {
+    document.getElementById("homeSection").style.display = "none";
+    document.getElementById("photoSection").style.display = "none";
+    document.getElementById("gifSection").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
